@@ -1,0 +1,96 @@
+<section class="bg-white dark:bg-gray-900">
+  <div class="max-w-5xl mx-auto p-8">
+    <ng-container *ngIf="listTrainings">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
+          <thead>
+            <tr>
+              <th
+                class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+              >
+                ID
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+              >
+                NOM
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+              >
+                DESCRIPTION
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+              >
+                PRIX
+              </th>
+              <th class="px-4 py-2"></th>
+              <th class="px-4 py-2"></th>
+            </tr>
+          </thead>
+
+          <tbody class="divide-y divide-gray-200">
+            <tr *ngFor="let training of listTrainings" class="odd:bg-slate-200">
+              <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                {{ training.id }}
+              </td>
+              <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                {{ training.name }}
+              </td>
+              <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                {{ training.description }}
+              </td>
+              <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                {{ training.price }}€
+              </td>
+              <td>
+                <div>
+                    <label for="Quantity" class="sr-only"> Quantity </label>
+                  
+                    <div class="flex items-center justify-center rounded border border-gray-200 bg-white w-32">
+                      <button
+                        type="button"
+                        class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
+                        (click)="updateTrainingQty(training, training.quantity-1)"
+                      >
+                        &minus;
+                      </button>
+                  
+                      <span>
+                        <input
+                          type="number"
+                          id="Quantity"
+                          value="1"
+                          class="h-10 w-16 border-y-0 border-gray-200 text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+                          [(ngModel)]="training.quantity"
+                        />
+                      </span>
+                  
+                      <button
+                        type="button"
+                        class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
+                        (click)="updateTrainingQty(training, training.quantity+1)"
+                      >
+                        &plus;
+                      </button>
+                    </div>
+                  </div>
+                
+                </td>
+              <td class="whitespace-nowrap px-4 py-2">
+                <a
+                  class="inline-block rounded bg-teal-600 transition hover:bg-teal-700 px-4 py-2 text-xs font-medium text-white"
+                  (click)="addToBasket(training)"
+                  routerLink="/basket"
+                >
+                  Hop! dans le panier
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </div>
+</section>

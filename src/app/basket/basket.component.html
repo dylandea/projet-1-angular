@@ -1,0 +1,137 @@
+<section class="bg-white dark:bg-gray-900">
+
+  <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-lg text-center">
+      <h1 class="text-2xl font-bold sm:text-3xl">Mon petit panier</h1>
+
+
+    </div>
+      <ng-container *ngIf="(listBasket!== undefined && listBasket.length>0); else elseBlock">
+        <div class="overflow-x-auto mx-auto mt-8 mb-0 max-w-4xl space-y-4">
+          <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
+            <thead>
+              <tr>
+                <th
+                  class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+                >
+                  ID
+                </th>
+                <th
+                  class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+                >
+                  NOM
+                </th>
+                <th
+                  class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+                >
+                  DESCRIPTION
+                </th>
+                <th
+                  class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+                >
+                  TOTAL
+                </th>
+                <th class="px-4 py-2"></th>
+                <th class="px-4 py-2"></th>
+              </tr>
+            </thead>
+
+            <tbody class="divide-y divide-gray-200">
+              <tr *ngFor="let itemBasket of listBasket" class="odd:bg-slate-200">
+                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                  {{ itemBasket.id }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{ itemBasket.name }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{ itemBasket.description }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{ itemBasket.price * itemBasket.quantity }}€
+                </td>
+
+
+
+<!--
+  This component uses @tailwindcss/forms
+
+  yarn add @tailwindcss/forms
+  npm install @tailwindcss/forms
+
+  plugins: [require('@tailwindcss/forms')]
+
+  @layer components {
+    .no-spinner {
+      -moz-appearance: textfield;
+    }
+
+    .no-spinner::-webkit-outer-spin-button,
+    .no-spinner::-webkit-inner-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+  }
+-->
+<td>
+<div>
+    <label for="Quantity" class="sr-only"> Quantity </label>
+
+    <div class="flex items-center justify-center rounded border border-gray-200 bg-white w-32">
+      <button
+        type="button"
+        class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
+        (click)="updateQuantity(itemBasket, itemBasket.quantity-1)"
+      >
+        &minus;
+      </button>
+
+      <span>
+        <input
+          type="number"
+          id="Quantity"
+          value="1"
+          class="h-10 w-16 border-y-0 border-gray-200 text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+          [(ngModel)]="itemBasket.quantity"
+        />
+      </span>
+
+      <button
+        type="button"
+        class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
+        (click)="updateQuantity(itemBasket, itemBasket.quantity+1)"
+      >
+        &plus;
+      </button>
+    </div>
+  </div>
+
+</td>
+
+
+
+                <td class="whitespace-nowrap px-4 py-2">
+                  <button
+                    class="inline-block rounded bg-teal-600 transition hover:bg-teal-700 px-4 py-2 text-xs font-medium text-white"
+                    (click)="removeFromBasket(itemBasket)"
+                  >
+                    Supprimer
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="flex items-center justify-end m-4">
+            <button
+                    class="inline-block rounded bg-teal-600 transition hover:bg-teal-700 px-4 py-2 text-sm font-medium text-white"
+                    routerLink="/order-form"
+                  >
+                    Valider mon panier
+                  </button>
+          </div>
+
+        </div>
+      </ng-container>
+      <ng-template #elseBlock><p class="text-center">Le panier est vide</p></ng-template>
+    </div>
+  </section>
