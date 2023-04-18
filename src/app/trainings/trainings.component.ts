@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TrainingModel } from '../model/training.model';
 import { BasketService } from '../services/basket.service';
 import { compileNgModule } from '@angular/compiler';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-trainings',
@@ -10,10 +11,19 @@ import { compileNgModule } from '@angular/compiler';
 })
 export class TrainingsComponent implements OnInit {
   listTrainings: TrainingModel[] | undefined;
-  constructor(private basketService: BasketService) {}
+  error: null | undefined;
+  constructor(
+    private basketService: BasketService,
+    private apiService: ApiService
+  ) {}
 
   ngOnInit(): void {
-    this.listTrainings = [
+    this.apiService.getTrainings().subscribe({
+      next: (data) => (this.listTrainings = data),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
+    /* this.listTrainings = [
       {
         id: 1,
         name: 'Java',
@@ -35,17 +45,16 @@ export class TrainingsComponent implements OnInit {
         price: 1500,
         quantity: 1,
       },
-    ];
+    ]; */
   }
 
   addToBasket(training: TrainingModel) {
     this.basketService.addToBasket(training);
   }
 
-  updateTrainingQty(training: TrainingModel, newQty:number) {
-    if (newQty>=1) {
+  updateTrainingQty(training: TrainingModel, newQty: number) {
+    if (newQty >= 1) {
       training.quantity = newQty;
     }
-    
   }
 }

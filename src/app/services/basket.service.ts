@@ -7,12 +7,15 @@ import { CustomerModel } from '../model/customer.model';
   providedIn: 'root',
 })
 export class BasketService {
-  basket: TrainingModel[] | undefined;
+  basket: TrainingModel[];
   private customer: CustomerModel;
 
   constructor() {
     this.basket = JSON.parse(localStorage.getItem('basket') || '[]');
-    this.customer = JSON.parse(localStorage.getItem('customer') || JSON.stringify(new CustomerModel("","","","","")));
+    this.customer = JSON.parse(
+      localStorage.getItem('customer') ||
+        JSON.stringify(new CustomerModel('', '', '', '', ''))
+    );
   }
 
   addToBasket(training: TrainingModel) {
@@ -24,7 +27,7 @@ export class BasketService {
     } else {
       itemBasket.quantity += 1;
     }
-    console.log(this.basket);
+
     localStorage.setItem('basket', JSON.stringify(this.basket));
   }
 
@@ -33,10 +36,10 @@ export class BasketService {
       (x) => x.id === training.id
     );
 
-      const index: number =
-        this.basket?.findIndex((x) => x.id === training.id) ?? -1;
-        console.log(index);
-      if (index !== -1) this.basket?.splice(index, 1);
+    const index: number =
+      this.basket?.findIndex((x) => x.id === training.id) ?? -1;
+
+    if (index !== -1) this.basket.splice(index, 1);
 
     console.log(this.basket);
     localStorage.setItem('basket', JSON.stringify(this.basket));
