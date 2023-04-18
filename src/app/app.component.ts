@@ -18,7 +18,7 @@ export class AppComponent {
     private localStore: LocalService
   ) {
     this.user = this.authenticationService.getUser();
-    console.log(this.localStore.getData('user'), 'hello');
+    this.localStore.getData('user');
   }
 
   /* get isAdmin() {

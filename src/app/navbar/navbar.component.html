@@ -24,9 +24,11 @@
             </a>
           </li>
           <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/adminManagement" *ngIf="isAdmin">
+            <div *ngIf="isAdmin" >
+              <a class="text-gray-500 transition hover:text-gray-500/75" routerLink="/adminManagement" >
                 Interface Administrateur
               </a>
+            </div>
           </li>
           
         </ul>

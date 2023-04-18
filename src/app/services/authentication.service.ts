@@ -48,6 +48,7 @@ export class AuthenticationService {
     console.log(this.user, 'user');
     return this.user?.roles.includes('ADMIN');
   }
+  
   getUser(): UserModel | undefined {
     return this.user;
   }
