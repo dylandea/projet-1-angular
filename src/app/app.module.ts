@@ -15,6 +15,9 @@ import { OrderFormComponent } from './order-form/order-form.component';
 import { OrdercongratsComponent } from './ordercongrats/ordercongrats.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { CustomerComponent } from './customer/customer.component';
+import { AuthComponentComponent } from './auth-component/auth-component.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { LoginComponent } from './login/login.component';
     OrdercongratsComponent,
     FooterComponent,
     LoginComponent,
+    CustomerComponent,
+    AuthComponentComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

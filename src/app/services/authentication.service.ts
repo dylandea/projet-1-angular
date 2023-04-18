@@ -7,12 +7,12 @@ import { UserModel } from '../model/user.model';
 export class AuthenticationService {
     public user: UserModel;
 
-constructor (private router: Router) {
-  this.user = JSON.parse(localStorage.getItem('user') || '{}')
-}
+    constructor(private router: Router) {
+        this.user = JSON.parse(localStorage.getItem('user') || '{}')
+    }
     login(username: string, password: string) {
-                localStorage.setItem('user', JSON.stringify(this.user));
-                return this.user;
+        localStorage.setItem('user', JSON.stringify(this.user));
+        return this.user;
     }
 
     logout() {

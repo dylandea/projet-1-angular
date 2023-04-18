@@ -6,37 +6,43 @@ import { BasketComponent } from './basket/basket.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { OrdercongratsComponent } from './ordercongrats/ordercongrats.component';
+import { CustomerComponent } from './customer/customer.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {
-    path : 'trainings',
-    component : TrainingsComponent
+    path: 'trainings',
+    component: TrainingsComponent
   },
   {
-    path : '',
-    component : AboutComponent
+    path: '',
+    component: AboutComponent
   },
   {
-    path : 'basket',
-    component : BasketComponent
+    path : 'auth',
+    component : AuthComponent
   },
   {
-    path : '404',
-    component : NotFoundComponent
+    path: '404',
+    component: NotFoundComponent
   },
   {
-    path : 'order-congrats',
-    component : OrdercongratsComponent
+    path: 'basket',
+    component: CustomerComponent
   },
   {
-    path : 'order-form',
-    component : OrderFormComponent
+    path: 'order-congrats',
+    component: OrdercongratsComponent
   },
   {
-    path : '**',
+    path: 'order-form',
+    component: OrderFormComponent
+  },
+  {
+    path: '**',
     redirectTo: '/404'
   }
-  
+
 ];
 
 @NgModule({
