@@ -15,6 +15,7 @@ import { OrderFormComponent } from './order-form/order-form.component';
 import { OrdercongratsComponent } from './ordercongrats/ordercongrats.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { AdminManagementComponent } from './admin-management/admin-management.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LoginComponent } from './login/login.component';
     OrdercongratsComponent,
     FooterComponent,
     LoginComponent,
+    AdminManagementComponent,
   ],
   imports: [
     BrowserModule,
