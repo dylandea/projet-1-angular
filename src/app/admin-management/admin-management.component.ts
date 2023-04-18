@@ -4,11 +4,10 @@ import { TrainingModel } from '../model/training.model';
 @Component({
   selector: 'app-admin-management',
   templateUrl: './admin-management.component.html',
-  styleUrls: ['./admin-management.component.css']
+  styleUrls: ['./admin-management.component.css'],
 })
 export class AdminManagementComponent implements OnInit {
   trainigs!: TrainingModel[];
-  
 
   constructor() {}
 
@@ -18,14 +17,14 @@ export class AdminManagementComponent implements OnInit {
 
   //Ajouter une formation
   addTraining() {
-
+    console.log();
   }
   //modifier une formation
   updateTraining() {
-
+    console.log();
   }
   //Supprimer un formation
   deleteTraining() {
-
+    console.log();
   }
 }

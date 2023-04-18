@@ -19,6 +19,7 @@ const routes: Routes = [
   {
     path: 'adminManagement',
     component: AdminManagementComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: '',
@@ -34,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: 'basket',
-    component: CustomerComponent,
+    component: BasketComponent,
   },
   {
     path: 'order-congrats',
@@ -47,11 +48,6 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: '/404',
-  },
-  {
-    path: 'admin',
-    component: AdminManagementComponent,
-    canActivate: [AdminGuard],
   },
 ];
 

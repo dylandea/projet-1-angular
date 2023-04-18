@@ -21,10 +21,18 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
-    if (this.users.some((x) => x.email === email && x.password === password)) {
+    let user = this.users.find(
+      (x) => x.email === email && x.password === password
+    );
+    if (user) {
+      this.user = user;
       this.localStore.saveData('user', JSON.stringify(this.user));
       /* localStorage.setItem('user', JSON.stringify(this.user)); */
+      console.log('login1');
+      return true;
     }
+    console.log('login2');
+    return false;
   }
 
   logout() {
@@ -33,6 +41,7 @@ export class AuthenticationService {
   }
 
   isAdmin() {
+    console.log(this.user, 'user');
     return this.user?.roles.includes('ADMIN');
   }
 }
