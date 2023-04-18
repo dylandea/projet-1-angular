@@ -8,8 +8,13 @@ import { UserModel } from '../model/user.model';
 export class AuthenticationService {
   users: UserModel[];
   user: UserModel | undefined;
-
   constructor(private router: Router, private localStore: LocalService) {
+    let tmpUser = this.localStore.getData('user');
+    if (tmpUser) {
+      this.user = JSON.parse(tmpUser);
+    } else {
+    }
+
     /* if (JSON.parse(localStorage.getItem('user')!) !== null) {
       this.user = JSON.parse(localStorage.getItem('user')!);
     } */
@@ -27,7 +32,6 @@ export class AuthenticationService {
     if (user) {
       this.user = user;
       this.localStore.saveData('user', JSON.stringify(this.user));
-      /* localStorage.setItem('user', JSON.stringify(this.user)); */
       console.log('login1');
       return true;
     }
@@ -43,5 +47,9 @@ export class AuthenticationService {
   isAdmin() {
     console.log(this.user, 'user');
     return this.user?.roles.includes('ADMIN');
+  }
+  
+  getUser(): UserModel | undefined {
+    return this.user;
   }
 }
