@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TrainingModel } from '../model/training.model';
+import { ApiService } from '../services/api.service';
+
 
 @Component({
   selector: 'app-admin-management',
@@ -8,11 +10,14 @@ import { TrainingModel } from '../model/training.model';
 })
 export class AdminManagementComponent implements OnInit {
   trainigs!: TrainingModel[];
+  error: null | undefined;
+  trainingIdToDelete : number ;
 
-  constructor() {}
+  constructor(private apiService: ApiService) {
+    this.trainingIdToDelete = 0;
+  }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   //Ajouter une formation
@@ -24,7 +29,11 @@ export class AdminManagementComponent implements OnInit {
     console.log();
   }
   //Supprimer un formation
-  deleteTraining() {
-    console.log();
+  deleteTraining(id: number) {
+    this.apiService.deletetraining(id).subscribe({
+      next: () => console.log("La formation a bien été supprimer"),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
   }
 }
