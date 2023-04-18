@@ -6,6 +6,7 @@ import { BasketComponent } from './basket/basket.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { OrdercongratsComponent } from './ordercongrats/ordercongrats.component';
+import { AdminGuard } from './components/admin.guard';
 
 const routes: Routes = [
   {
@@ -35,8 +36,10 @@ const routes: Routes = [
   {
     path : '**',
     redirectTo: '/404'
+  },
+  {
+    path : 'admin', component : AdminComponent, canActivate: [AdminGuard]
   }
-  
 ];
 
 @NgModule({
