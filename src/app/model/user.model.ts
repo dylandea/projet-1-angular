@@ -1,12 +1,12 @@
-import { Role } from './role';
+/* import { Role } from './role'; */
 
 export class UserModel {
-  email: String;
-  password: String;
-  role: Role;
-  constructor(email: String, password: String, role: Role) {
+  email: string;
+  password: string;
+  roles: string[];
+  constructor(email: string, password: string, roles: string[]) {
     this.email = email;
     this.password = password;
-    this.role = role;
+    this.roles = roles;
   }
 }
