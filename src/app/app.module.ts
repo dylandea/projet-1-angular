@@ -16,6 +16,8 @@ import { OrdercongratsComponent } from './ordercongrats/ordercongrats.component'
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
+import { CustomerComponent } from './customer/customer.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { AdminManagementComponent } from './admin-management/admin-management.co
     FooterComponent,
     LoginComponent,
     AdminManagementComponent,
+    CustomerComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

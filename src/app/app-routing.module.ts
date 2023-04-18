@@ -8,47 +8,55 @@ import { OrderFormComponent } from './order-form/order-form.component';
 import { OrdercongratsComponent } from './ordercongrats/ordercongrats.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
 import { AdminGuard } from './components/admin.guard';
+import { CustomerComponent } from './customer/customer.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {
-    path : 'trainings',
-    component : TrainingsComponent
+    path: 'trainings',
+    component: TrainingsComponent,
   },
   {
-    path : 'adminManagement',
-    component : AdminManagementComponent
+    path: 'adminManagement',
+    component: AdminManagementComponent,
   },
   {
-    path : '',
-    component : AboutComponent
+    path: '',
+    component: AboutComponent,
   },
   {
-    path : 'basket',
-    component : BasketComponent
+    path: 'auth',
+    component: AuthComponent,
   },
   {
-    path : '404',
-    component : NotFoundComponent
+    path: '404',
+    component: NotFoundComponent,
   },
   {
-    path : 'order-congrats',
-    component : OrdercongratsComponent
+    path: 'basket',
+    component: CustomerComponent,
   },
   {
-    path : 'order-form',
-    component : OrderFormComponent
+    path: 'order-congrats',
+    component: OrdercongratsComponent,
   },
   {
-    path : '**',
-    redirectTo: '/404'
+    path: 'order-form',
+    component: OrderFormComponent,
   },
   {
-    path : 'admin', component : AdminComponent, canActivate: [AdminGuard]
-  }
+    path: '**',
+    redirectTo: '/404',
+  },
+  {
+    path: 'admin',
+    component: AdminManagementComponent,
+    canActivate: [AdminGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
