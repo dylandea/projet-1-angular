@@ -1,6 +1,6 @@
 import { Role } from './role';
 
-export class UserModel {
+export class Admin {
   email: String;
   password: String;
   role: Role;
