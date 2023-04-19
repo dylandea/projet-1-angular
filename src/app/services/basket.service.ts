@@ -60,5 +60,7 @@ export class BasketService {
 
   saveCustomer(customer: CustomerModel) {
     localStorage.setItem('customer', JSON.stringify(this.customer));
+    this.basket = [];
+    localStorage.setItem('basket', JSON.stringify(this.basket));
   }
 }

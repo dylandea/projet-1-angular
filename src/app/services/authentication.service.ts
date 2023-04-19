@@ -36,6 +36,7 @@ export class AuthenticationService {
       this.user = user;
       this.isLogged = true;
       this.localStore.saveData('user', JSON.stringify(this.user));
+
       return true;
     }
     return false;
@@ -46,6 +47,7 @@ export class AuthenticationService {
     this.isLogged = false;
     this.user = undefined;
     this.router.navigateByUrl('/');
+    alert('A bientôt !');
   }
 
   isAdmin() {

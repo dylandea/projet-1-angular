@@ -44,6 +44,7 @@ export class AuthComponent implements OnInit {
         } else {
           this.router.navigateByUrl('trainings');
         }
+        alert('Vous etes bien connecté !');
       } else {
         this.router.navigateByUrl('404');
       }

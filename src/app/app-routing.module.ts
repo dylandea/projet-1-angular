@@ -43,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'order-form',
-    component: OrderFormComponent,
+    component: CustomerComponent,
   },
   {
     path: '**',

@@ -14,7 +14,7 @@ export class AppComponent {
   /*   user: UserModel; */
 
   constructor(
-    private authenticationService: AuthenticationService,
+    public authenticationService: AuthenticationService,
     private localStore: LocalService
   ) {
     this.user = this.authenticationService.getUser();
