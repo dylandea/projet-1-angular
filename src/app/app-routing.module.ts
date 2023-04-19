@@ -10,6 +10,9 @@ import { AdminManagementComponent } from './admin-management/admin-management.co
 import { AdminGuard } from './components/admin.guard';
 import { CustomerComponent } from './customer/customer.component';
 import { AuthComponent } from './auth/auth.component';
+import { AddTrainingComponent } from './admin-management/add-training/add-training.component';
+import { UpdateTrainingComponent } from './admin-management/update-training/update-training.component';
+import { TableTrainingsComponent } from './admin-management/table-trainings/table-trainings.component';
 
 const routes: Routes = [
   {
@@ -20,6 +23,20 @@ const routes: Routes = [
     path: 'adminManagement',
     component: AdminManagementComponent,
     canActivate: [AdminGuard],
+    children: [
+      {
+        path: '',
+        component: TableTrainingsComponent,
+      },
+      {
+        path: 'add',
+        component: AddTrainingComponent,
+      },
+      {
+        path: 'update',
+        component: UpdateTrainingComponent,
+      },
+    ],
   },
   {
     path: '',
