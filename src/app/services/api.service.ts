@@ -17,6 +17,15 @@ export class ApiService {
     return this.http.get<TrainingModel>(environment.host + '/trainings/' + id);
   }
 
+  postTraining(training : TrainingModel){
+    return this.http.post<TrainingModel>(environment.host + '/trainings', {
+      id : training.id,
+      name: training.name,
+      description: training.description,
+      price : training.price,
+      quantity :  1
+     });
+  }
   deletetraining(id: number){
     return this.http.delete<TrainingModel>(environment.host + '/trainings/' + id)
   }

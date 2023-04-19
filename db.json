@@ -1,13 +1,6 @@
 {
   "trainings": [
     {
-      "id": 4,
-      "name": "Php",
-      "description": "Initiation au Dev/Web avec hp 4 jours",
-      "price": 1300,
-      "quantity": 1
-    },
-    {
       "id": 5,
       "name": "NodeJs",
       "description": "Prise en main de NodeJs/Express 2 jours",
@@ -33,6 +26,34 @@
       "name": "DotNet",
       "description": "DotNet & entityframework en 5 jours",
       "price": "2750",
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "name": "ds",
+      "description": "cs",
+      "price": 4,
+      "quantity": 1
+    },
+    {
+      "id": 5555,
+      "name": "dsgf",
+      "description": "cssdf",
+      "price": 5555,
+      "quantity": 1
+    },
+    {
+      "id": 26828,
+      "name": "gvf",
+      "description": "dv",
+      "price": 152,
+      "quantity": 1
+    },
+    {
+      "id": 1,
+      "name": "Java",
+      "description": "Formation Java Avancée SE 8 ",
+      "price": 5000,
       "quantity": 1
     }
   ]
