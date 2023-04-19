@@ -26,6 +26,10 @@ export class ApiService {
       quantity :  1
      });
   }
+  updateTraining(training: TrainingModel) {
+    return this.http.put<TrainingModel>(environment.host, training);
+  }
+
   deletetraining(id: number){
     return this.http.delete<TrainingModel>(environment.host + '/trainings/' + id)
   }

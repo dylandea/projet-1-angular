@@ -9,6 +9,7 @@ import { ApiService } from '../services/api.service';
 })
 export class AdminManagementComponent implements OnInit {
   training! : TrainingModel;
+  listTrainings: TrainingModel[] | undefined;
   error: null | undefined;
   trainingIdToDelete : number ;
   
@@ -18,6 +19,11 @@ export class AdminManagementComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.apiService.getTrainings().subscribe({
+      next: (data) => (this.listTrainings = data),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
   }
 
   //Ajouter une formation
@@ -35,8 +41,15 @@ export class AdminManagementComponent implements OnInit {
     });
   }
   //modifier une formation
+  selectIdToUpdate(id : number){
+    console.log(id);
+  }
   updateTraining(training : TrainingModel) {
-    console.log();
+    this.apiService.updateTraining(training).subscribe({
+      next: () => console.log("La formation a bien été mise à jour"),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    })
   }
   //Supprimer un formation
   deleteTraining(id: number) {
