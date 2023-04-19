@@ -4,24 +4,10 @@ import { AuthenticationService } from '../services/authentication.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit, OnChanges {
+export class NavbarComponent implements OnInit {
+  constructor(public authenticationService: AuthenticationService) {}
 
-  isAdmin : boolean | undefined = this.authenticationService.isAdmin();
-
-
-constructor(private authenticationService: AuthenticationService) { }
- 
-ngOnChanges(changes: SimpleChanges): void {
-
-  this.isAdmin =this.authenticationService.isAdmin();
-  
-  }
-
-  ngOnInit(): void {
-   
-  }
-
-
+  ngOnInit(): void {}
 }

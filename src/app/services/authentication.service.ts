@@ -8,10 +8,12 @@ import { UserModel } from '../model/user.model';
 export class AuthenticationService {
   users: UserModel[];
   user: UserModel | undefined;
+  isLogged: boolean | undefined = false;
   constructor(private router: Router, private localStore: LocalService) {
     let tmpUser = this.localStore.getData('user');
     if (tmpUser) {
       this.user = JSON.parse(tmpUser);
+      this.isLogged = true;
     } else {
     }
 
@@ -48,7 +50,11 @@ export class AuthenticationService {
     console.log(this.user, 'user');
     return this.user?.roles.includes('ADMIN');
   }
-  
+
+  isLoggedFunc() {
+    return this.isLogged;
+  }
+
   getUser(): UserModel | undefined {
     return this.user;
   }
