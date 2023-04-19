@@ -15,6 +15,7 @@ export class AuthenticationService {
       this.user = JSON.parse(tmpUser);
       this.isLogged = true;
     } else {
+      this.isLogged = false;
     }
 
     /* if (JSON.parse(localStorage.getItem('user')!) !== null) {
@@ -33,16 +34,17 @@ export class AuthenticationService {
     );
     if (user) {
       this.user = user;
+      this.isLogged = true;
       this.localStore.saveData('user', JSON.stringify(this.user));
-      console.log('login1');
       return true;
     }
-    console.log('login2');
     return false;
   }
 
   logout() {
     localStorage.removeItem('user');
+    this.isLogged = false;
+    this.user = undefined;
     this.router.navigateByUrl('login');
   }
 
