@@ -44,4 +44,7 @@ export class ApiService {
       }
     );
   }
+  updateTraining(training: TrainingModel) {
+    return this.http.put<TrainingModel>(environment.host, training);
+  }
 }

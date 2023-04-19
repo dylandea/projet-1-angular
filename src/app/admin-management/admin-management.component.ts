@@ -8,7 +8,12 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./admin-management.component.css'],
 })
 export class AdminManagementComponent implements OnInit {
+<<<<<<< HEAD
   training!: TrainingModel;
+=======
+  training! : TrainingModel;
+  listTrainings: TrainingModel[] | undefined;
+>>>>>>> 0a7e21eb4004b0a05eb81fc890f229dfd1c6e0ce
   error: null | undefined;
   trainingIdToDelete: number;
 
@@ -17,7 +22,17 @@ export class AdminManagementComponent implements OnInit {
     this.training = new TrainingModel(-1, '', '', -1, -1);
   }
 
+<<<<<<< HEAD
   ngOnInit(): void {}
+=======
+  ngOnInit(): void {
+    this.apiService.getTrainings().subscribe({
+      next: (data) => (this.listTrainings = data),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
+  }
+>>>>>>> 0a7e21eb4004b0a05eb81fc890f229dfd1c6e0ce
 
   //Ajouter une formation
   addTraining(training: TrainingModel) {
@@ -37,6 +52,7 @@ export class AdminManagementComponent implements OnInit {
     });
   }
   //modifier une formation
+<<<<<<< HEAD
   updateTraining(training: TrainingModel) {
     this.apiService.putTraining(training).subscribe({
       next: (updatedTraining) =>
@@ -44,6 +60,17 @@ export class AdminManagementComponent implements OnInit {
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
+=======
+  selectIdToUpdate(id : number){
+    console.log(id);
+  }
+  updateTraining(training : TrainingModel) {
+    this.apiService.updateTraining(training).subscribe({
+      next: () => console.log("La formation a bien été mise à jour"),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    })
+>>>>>>> 0a7e21eb4004b0a05eb81fc890f229dfd1c6e0ce
   }
   //Supprimer un formation
   deleteTraining(id: number) {
