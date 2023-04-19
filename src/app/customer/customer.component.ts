@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { CustomerModel } from '../model/customer.model';
 import { BasketService } from '../services/basket.service';
 import {Router} from '@angular/router';
@@ -13,19 +13,24 @@ export class CustomerComponent implements OnInit{
 
   myForm : FormGroup;
   
-  constructor(public basketService : BasketService, private router : Router){
-    let customer = this.basketService.getCustomer();
+  constructor(public basketService : BasketService, private router : Router, private formBuilder : FormBuilder){
     this.myForm = new FormGroup({
-      name : new FormControl(customer.lastname),
-      firstname : new FormControl(customer.firstname),
-      address: new FormControl(customer.address),
-      phone : new FormControl(customer.phone),
-      email : new FormControl(customer.email)
+      name : new FormControl(),
+      firstname : new FormControl(),
+      phone : new FormControl(),
+      address: new FormControl(),
+      email : new FormControl()
     })
   }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.myForm = this.formBuilder.group({
+      name : ['', [Validators.required]],
+      firstname : ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.maxLength(10)]],
+      address: ['', [Validators.required, Validators.minLength(25)]],
+      email: ['', Validators.required, Validators.pattern("[/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.]")]
+    });
   }
 
 
@@ -39,3 +44,4 @@ onSaveCustomer(form : FormGroup){
 
   
 }
+
