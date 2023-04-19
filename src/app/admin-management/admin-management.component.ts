@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TrainingModel } from '../model/training.model';
 import { ApiService } from '../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-management',
@@ -8,23 +9,16 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./admin-management.component.css'],
 })
 export class AdminManagementComponent implements OnInit {
-<<<<<<< HEAD
   training!: TrainingModel;
-=======
-  training! : TrainingModel;
   listTrainings: TrainingModel[] | undefined;
->>>>>>> 0a7e21eb4004b0a05eb81fc890f229dfd1c6e0ce
   error: null | undefined;
   trainingIdToDelete: number;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private router: Router) {
     this.trainingIdToDelete = 0;
     this.training = new TrainingModel(-1, '', '', -1, -1);
   }
 
-<<<<<<< HEAD
-  ngOnInit(): void {}
-=======
   ngOnInit(): void {
     this.apiService.getTrainings().subscribe({
       next: (data) => (this.listTrainings = data),
@@ -32,7 +26,6 @@ export class AdminManagementComponent implements OnInit {
       complete: () => (this.error = null),
     });
   }
->>>>>>> 0a7e21eb4004b0a05eb81fc890f229dfd1c6e0ce
 
   //Ajouter une formation
   addTraining(training: TrainingModel) {
@@ -52,7 +45,6 @@ export class AdminManagementComponent implements OnInit {
     });
   }
   //modifier une formation
-<<<<<<< HEAD
   updateTraining(training: TrainingModel) {
     this.apiService.putTraining(training).subscribe({
       next: (updatedTraining) =>
@@ -60,18 +52,12 @@ export class AdminManagementComponent implements OnInit {
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
-=======
-  selectIdToUpdate(id : number){
+  }
+
+  selectIdToUpdate(id: number) {
     console.log(id);
   }
-  updateTraining(training : TrainingModel) {
-    this.apiService.updateTraining(training).subscribe({
-      next: () => console.log("La formation a bien été mise à jour"),
-      error: (err) => (this.error = err.message),
-      complete: () => (this.error = null),
-    })
->>>>>>> 0a7e21eb4004b0a05eb81fc890f229dfd1c6e0ce
-  }
+
   //Supprimer un formation
   deleteTraining(id: number) {
     this.apiService.deletetraining(id).subscribe({

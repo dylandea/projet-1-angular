@@ -18,6 +18,9 @@ import { LoginComponent } from './login/login.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AuthComponent } from './auth/auth.component';
+import { AddTrainingComponent } from './admin-management/add-training/add-training.component';
+import { UpdateTrainingComponent } from './admin-management/update-training/update-training.component';
+import { TableTrainingsComponent } from './admin-management/table-trainings/table-trainings.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { AuthComponent } from './auth/auth.component';
     AdminManagementComponent,
     CustomerComponent,
     AuthComponent,
+    AddTrainingComponent,
+    UpdateTrainingComponent,
+    TableTrainingsComponent,
   ],
   imports: [
     BrowserModule,

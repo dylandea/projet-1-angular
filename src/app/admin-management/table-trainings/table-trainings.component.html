@@ -1,5 +1,14 @@
 <section class="bg-white dark:bg-gray-900">
   <div class="max-w-5xl mx-auto p-8">
+    <div class="">
+      <button
+        type="button"
+        class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+        routerLink="add"
+      >
+        Ajouter une formation
+      </button>
+    </div>
     <ng-container *ngIf="listTrainings">
       <div class="overflow-x-auto">
         <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
@@ -44,53 +53,20 @@
               <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                 {{ training.price }}€
               </td>
-              <td>
-                <div>
-                  <label for="Quantity" class="sr-only"> Quantity </label>
-
-                  <div
-                    class="flex items-center justify-center rounded border border-gray-200 bg-white w-32"
-                  >
-                    <button
-                      type="button"
-                      class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
-                      (click)="
-                        updateTrainingQty(training, training.quantity - 1)
-                      "
-                    >
-                      &minus;
-                    </button>
-
-                    <span>
-                      <input
-                        type="number"
-                        id="Quantity"
-                        value="1"
-                        class="h-10 w-16 border-y-0 border-gray-200 text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-                        [(ngModel)]="training.quantity"
-                      />
-                    </span>
-
-                    <button
-                      type="button"
-                      class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
-                      (click)="
-                        updateTrainingQty(training, training.quantity + 1)
-                      "
-                    >
-                      &plus;
-                    </button>
-                  </div>
-                </div>
+              <td class="whitespace-nowrap px-4 py-2">
+                <a
+                  class="inline-block rounded bg-yellow-600 transition hover:bg-yellow-700 px-4 py-2 text-xs font-medium text-white"
+                  (click)="moveToUpdate(training)"
+                  routerLink="update"
+                  >Modifier</a
+                >
               </td>
               <td class="whitespace-nowrap px-4 py-2">
                 <a
-                  class="inline-block rounded bg-teal-600 transition hover:bg-teal-700 px-4 py-2 text-xs font-medium text-white"
-                  (click)="addToBasket(training)"
-                  routerLink="/basket"
+                  class="inline-block rounded bg-red-600 transition hover:bg-red-700 px-4 py-2 text-xs font-medium text-white"
+                  (click)="deleteTraining(training.id)"
+                  >Supprimer</a
                 >
-                  Hop! dans le panier
-                </a>
               </td>
             </tr>
           </tbody>
