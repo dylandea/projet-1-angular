@@ -45,7 +45,7 @@ export class AuthenticationService {
     localStorage.removeItem('user');
     this.isLogged = false;
     this.user = undefined;
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('/');
   }
 
   isAdmin() {

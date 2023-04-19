@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { CustomerModel } from '../model/customer.model';
 import { BasketService } from '../services/basket.service';
 import { Router } from '@angular/router';
@@ -10,25 +15,19 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit {
-  myForm: FormGroup;
+  myForm!: FormGroup;
 
   constructor(
     public basketService: BasketService,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private formBuilder : FormBuilder
-  ) {
-    this.myForm = new FormGroup({
-      email : new FormControl(),
-      password : new FormControl()
-      
-    })
-  }
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
-      email: ['', Validators.required, Validators.pattern("[/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.]")],
-      password: ['', [Validators.required, Validators.pattern("^([0-9]{4,}$")]],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
@@ -51,5 +50,3 @@ export class AuthComponent implements OnInit {
     }
   }
 }
-
-
