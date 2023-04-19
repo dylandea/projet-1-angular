@@ -2,30 +2,40 @@ import { Component, OnInit } from '@angular/core';
 import { TrainingModel } from '../model/training.model';
 import { ApiService } from '../services/api.service';
 
-
 @Component({
   selector: 'app-admin-management',
   templateUrl: './admin-management.component.html',
   styleUrls: ['./admin-management.component.css'],
 })
 export class AdminManagementComponent implements OnInit {
-  trainigs!: TrainingModel[];
+  training! : TrainingModel;
   error: null | undefined;
   trainingIdToDelete : number ;
-
+  
   constructor(private apiService: ApiService) {
     this.trainingIdToDelete = 0;
+    this.training = new TrainingModel(-1,"","",-1,-1)
   }
 
   ngOnInit(): void {
   }
 
   //Ajouter une formation
-  addTraining() {
-    console.log();
+  addTraining(training : TrainingModel)  {
+    this.apiService.getTraining(training.id).subscribe({
+      next: () => {alert('Cet Id exicte déjà')},
+      error: () =>{ 
+        this.apiService.postTraining(training).subscribe({
+          next: (createdTraining) => console.log('La formation a bien été créée', createdTraining),
+          error: (err) => (this.error = err.message),
+          complete: () => (this.error = null),
+        });
+      },
+      complete: () => {}, 
+    });
   }
   //modifier une formation
-  updateTraining() {
+  updateTraining(training : TrainingModel) {
     console.log();
   }
   //Supprimer un formation

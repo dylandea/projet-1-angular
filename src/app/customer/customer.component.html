@@ -3,7 +3,7 @@
         <div>
             <label for="lastname" class="sr-only">Nom de famille</label>
             <div class="relative">
-                <input required name="lastname" type="text" autocomplete="family-name" id="lastname"
+                <input name="lastname" type="text" autocomplete="family-name" id="lastname"
                     class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
                     placeholder="Nom de famille" />
             </div>
@@ -12,7 +12,7 @@
         <div>
             <label for="firstname" class="sr-only">Prénom(s)</label>
             <div class="relative">
-                <input required name="firstname" autocomplete="given-name" id="firstname" type="text"
+                <input name="firstname" autocomplete="given-name" id="firstname" type="text"
                     class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Prénom" />
             </div>
         </div>
@@ -20,31 +20,31 @@
         <div>
             <label for="phone" class="sr-only">Téléphone</label>
             <div class="relative">
-                <input required name="phone" id="phone" type="text"
-                    class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Téléphone" />
+                <input name="phone" id="phone" type="text"
+                    class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Téléphone" maxlength="10"/>
             </div>
         </div>
 
         <div>
             <label for="address" class="sr-only">Adresse complète</label>
             <div class="relative">
-                <input required name="address" autocomplete="street-address" id="address" type="text"
+                <input name="address" autocomplete="street-address" id="address" type="text"
                     class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
-                    placeholder="Adresse complète" />
+                    placeholder="Adresse complète"/>
             </div>
         </div>
 
         <div>
             <label for="email" class="sr-only">Email</label>
             <div class="relative">
-                <input required name="email" autocomplete="email" id="email" type="email"
+                <input name="email" autocomplete="email" id="email" type="email"
                     class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" placeholder="Email" />
             </div>
         </div>
 
         <div class="flex items-center justify-end m-4">
             <button type="submit" routerLink="/order-congrats"
-                class="inline-block rounded bg-teal-600 transition hover:bg-teal-700 px-4 py-2 text-sm font-medium text-white disabled:bg-slate-400">
+                class="inline-block rounded bg-teal-600 transition hover:bg-teal-700 px-4 py-2 text-sm font-medium text-white">
                 Valider
             </button>
         </div>

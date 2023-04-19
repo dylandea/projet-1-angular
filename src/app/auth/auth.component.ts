@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomerModel } from '../model/customer.model';
 import { BasketService } from '../services/basket.service';
 import { Router } from '@angular/router';
@@ -15,16 +15,21 @@ export class AuthComponent implements OnInit {
   constructor(
     public basketService: BasketService,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private formBuilder : FormBuilder
   ) {
     this.myForm = new FormGroup({
-      email: new FormControl(),
-      password: new FormControl(),
-    });
+      email : new FormControl(),
+      password : new FormControl()
+      
+    })
   }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.myForm = this.formBuilder.group({
+      email: ['', Validators.required, Validators.pattern("[/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.]")],
+      password: ['', [Validators.required, Validators.pattern("^([0-9]{4,}$")]],
+    });
   }
 
   onLogin() {
@@ -46,3 +51,5 @@ export class AuthComponent implements OnInit {
     }
   }
 }
+
+
