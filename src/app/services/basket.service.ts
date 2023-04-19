@@ -41,7 +41,6 @@ export class BasketService {
 
     if (index !== -1) this.basket.splice(index, 1);
 
-    console.log(this.basket);
     localStorage.setItem('basket', JSON.stringify(this.basket));
   }
 

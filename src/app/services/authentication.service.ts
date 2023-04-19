@@ -49,7 +49,6 @@ export class AuthenticationService {
   }
 
   isAdmin() {
-    console.log(this.user, 'user');
     return this.user?.roles.includes('ADMIN');
   }
 
