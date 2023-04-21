@@ -50,26 +50,6 @@
                 {{ itemBasket.price! * itemBasket.quantity }}€
               </td>
 
-              <!--
-  This component uses @tailwindcss/forms
-
-  yarn add @tailwindcss/forms
-  npm install @tailwindcss/forms
-
-  plugins: [require('@tailwindcss/forms')]
-
-  @layer components {
-    .no-spinner {
-      -moz-appearance: textfield;
-    }
-
-    .no-spinner::-webkit-outer-spin-button,
-    .no-spinner::-webkit-inner-spin-button {
-      margin: 0;
-      -webkit-appearance: none;
-    }
-  }
--->
               <td>
                 <div>
                   <label for="Quantity" class="sr-only"> Quantity </label>
@@ -109,7 +89,6 @@
                   </div>
                 </div>
               </td>
-
               <td class="whitespace-nowrap px-4 py-2">
                 <button
                   class="inline-block rounded bg-teal-600 transition hover:bg-teal-700 px-4 py-2 text-xs font-medium text-white"
