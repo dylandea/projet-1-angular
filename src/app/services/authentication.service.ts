@@ -38,6 +38,9 @@ export class AuthenticationService {
       this.localStore.saveData('user', JSON.stringify(this.user));
 
       return true;
+    }else{
+      alert("Identifiant ou mot de passe incorrect.");
+      return false;
     }
     return false;
   }

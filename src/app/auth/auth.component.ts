@@ -46,7 +46,7 @@ export class AuthComponent implements OnInit {
         }
         alert('Vous etes bien connecté !');
       } else {
-        this.router.navigateByUrl('404');
+        this.router.navigateByUrl('auth');
       }
     }
   }
