@@ -3,6 +3,7 @@ import { TrainingModel } from '../model/training.model';
 import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
 import { Output, EventEmitter } from '@angular/core';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-admin-management',
@@ -15,9 +16,12 @@ export class AdminManagementComponent {
   error: null | undefined;
   trainingIdToDelete: number;
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    public authenticationService: AuthenticationService
+  ) {
     this.trainingIdToDelete = 0;
-    this.training = new TrainingModel(-1, '', '', -1, -1);
   }
 
   sendToUpdate(training: TrainingModel) {

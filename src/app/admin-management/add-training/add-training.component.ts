@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TrainingModel } from 'src/app/model/training.model';
+import { AdminService } from 'src/app/services/admin.service';
 import { ApiService } from 'src/app/services/api.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-add-training',
@@ -14,9 +16,13 @@ export class AddTrainingComponent {
   error: null | undefined;
   trainingIdToDelete: number;
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private adminService: AdminService
+  ) {
     this.trainingIdToDelete = 0;
-    this.training = new TrainingModel(-1, '', '', -1, -1);
+    this.training = new TrainingModel(uuidv4(), '', '', undefined, 1);
   }
 
   //Ajouter une formation
@@ -32,6 +38,7 @@ export class AddTrainingComponent {
           error: (err) => (this.error = err.message),
           complete: () => (this.error = null),
         });
+        this.adminService.fetchData();
       },
       complete: () => {},
     });

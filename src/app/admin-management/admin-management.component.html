@@ -1,11 +1,17 @@
 <div class="flex justify-center flex-col items-center">
   <div class="text-center py-5">
-    <h1>Bienvenu 'Admin'</h1>
+    <h1>
+      Bienvenue
+      {{
+        this.authenticationService.getUser()?.email === "elbab@gmail.com"
+          ? "Momo"
+          : "Admin"
+      }}
+    </h1>
+    <br />
+    <p>Vous êtes sur l'interface Administrateur</p>
     <!-- modifier admin par le nom de l'admin connecter -->
     <br />
-    <div>
-      <p>Que désirez vous faire ?</p>
-    </div>
   </div>
 
   <router-outlet (newItemEvent)="sendToUpdate(training)"> </router-outlet>

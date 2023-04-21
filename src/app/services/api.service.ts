@@ -13,7 +13,7 @@ export class ApiService {
     return this.http.get<TrainingModel[]>(environment.host + '/trainings');
   }
 
-  public getTraining(id: number) {
+  public getTraining(id: string) {
     return this.http.get<TrainingModel>(environment.host + '/trainings/' + id);
   }
 
@@ -26,7 +26,7 @@ export class ApiService {
       quantity: 1,
     });
   }
-  deletetraining(id: number) {
+  deletetraining(id: string) {
     return this.http.delete<TrainingModel>(
       environment.host + '/trainings/' + id
     );

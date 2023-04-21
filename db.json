@@ -1,52 +1,24 @@
 {
   "trainings": [
     {
-      "id": 5,
-      "name": "NodeJs",
-      "description": "Prise en main de NodeJs/Express 2 jours",
-      "price": 1400,
+      "id": "c665990d-a635-4794-8109-d28f8841e8ae",
+      "name": "ds",
+      "description": "sdds",
+      "price": 0,
       "quantity": 1
     },
     {
-      "id": 10,
-      "name": "PowerBi",
-      "description": "Business Intelligence 5 jours",
-      "price": 3000,
+      "id": "62fe40b1-3dda-4c20-addc-b7419a4d0f46",
+      "name": "dsfs",
+      "description": "sdf",
+      "price": 0,
       "quantity": 1
     },
     {
-      "name": "Java",
-      "description": "Java Standard Edition 8 sur 5 jours",
-      "price": "3500",
-      "quantity": 1,
-      "id": 11
-    },
-    {
-      "id": 12,
-      "name": "sdfgsdgsdgv",
-      "description": "dsgsdsdvsd",
-      "price": 55,
-      "quantity": 1
-    },
-    {
-      "id": 5555,
-      "name": "dsgf",
-      "description": "cssdf",
-      "price": 5555,
-      "quantity": 1
-    },
-    {
-      "id": 1,
-      "name": "Java",
-      "description": "Formation Java Avancée SE 8 ",
-      "price": 5000,
-      "quantity": 1
-    },
-    {
-      "id": 4444444,
-      "name": "444",
-      "description": "444",
-      "price": 444444,
+      "id": "abce5e72-b403-4495-a901-3713d6ba3bd1",
+      "name": "fv",
+      "description": "sdfc",
+      "price": 0,
       "quantity": 1
     }
   ]

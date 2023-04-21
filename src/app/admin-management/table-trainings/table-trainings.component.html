@@ -1,5 +1,8 @@
 <section class="bg-white dark:bg-gray-900">
   <div class="max-w-5xl mx-auto p-8">
+    <div>
+      <p>Que désirez vous faire ?</p>
+    </div>
     <div class="">
       <button
         type="button"
@@ -9,7 +12,7 @@
         Ajouter une formation
       </button>
     </div>
-    <ng-container *ngIf="listTrainings">
+    <ng-container *ngIf="this.adminService.getListTrainings() !== undefined">
       <div class="overflow-x-auto">
         <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
           <thead>
@@ -40,9 +43,12 @@
           </thead>
 
           <tbody class="divide-y divide-gray-200">
-            <tr *ngFor="let training of listTrainings" class="odd:bg-slate-200">
+            <tr
+              *ngFor="let training of this.adminService.getListTrainings()"
+              class="odd:bg-slate-200"
+            >
               <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                {{ training.id }}
+                {{ training.id.slice(0, 6) }}
               </td>
               <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                 {{ training.name }}
@@ -56,14 +62,14 @@
               <td class="whitespace-nowrap px-4 py-2">
                 <a
                   class="inline-block rounded bg-yellow-600 transition hover:bg-yellow-700 px-4 py-2 text-xs font-medium text-white"
-                  (click)="moveToUpdate(training)"
+                  (click)="this.adminService.updateTraining(training)"
                   routerLink="update"
                   >Modifier</a
                 >
               </td>
               <td class="whitespace-nowrap px-4 py-2">
                 <a
-                  class="inline-block rounded bg-red-600 transition hover:bg-red-700 px-4 py-2 text-xs font-medium text-white"
+                  class="inline-block rounded bg-red-600 transition hover:bg-red-700 px-4 py-2 text-xs font-medium text-white cursor-pointer"
                   (click)="deleteTraining(training.id)"
                   >Supprimer</a
                 >

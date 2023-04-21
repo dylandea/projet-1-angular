@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TrainingModel } from 'src/app/model/training.model';
+import { AdminService } from 'src/app/services/admin.service';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -14,9 +15,12 @@ export class UpdateTrainingComponent {
   error: null | undefined;
   trainingIdToDelete: number;
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    public adminService: AdminService
+  ) {
     this.trainingIdToDelete = 0;
-    this.training = new TrainingModel(-1, '', '', -1, -1);
   }
   //modifier une formation
   updateTraining(training: TrainingModel) {
