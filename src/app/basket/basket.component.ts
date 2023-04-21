@@ -10,12 +10,15 @@ import { BasketService } from '../services/basket.service';
 export class BasketComponent {
   listBasket : TrainingModel[] | undefined;
   constructor(private basketService: BasketService) {
-    this.listBasket = this.basketService.basket
+    //this.listBasket = this.basketService.basket
   }
   
-   /*  ngOnInit(): void {
+     ngOnInit(): void {
       this.listBasket = this.basketService.basket
-    } */
+    } 
+
+    
+    
 
     removeFromBasket(training: TrainingModel) {
       this.basketService.removeFromBasket(training)
