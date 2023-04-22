@@ -33,7 +33,7 @@
           <tbody class="divide-y divide-gray-200">
             <tr *ngFor="let training of listTrainings" class="odd:bg-slate-200">
               <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                {{ training.id }}
+                {{ training.id.slice(0, 6) }}
               </td>
               <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                 {{ training.name }}
@@ -42,7 +42,7 @@
                 {{ training.description }}
               </td>
               <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                {{ training.price }}€
+                {{ training.price! > 0 ? training.price + "€" : "Gratuit" }}
               </td>
               <td>
                 <div>

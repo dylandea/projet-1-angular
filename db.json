@@ -1,24 +1,31 @@
 {
   "trainings": [
     {
-      "id": "c665990d-a635-4794-8109-d28f8841e8ae",
-      "name": "ds",
-      "description": "sdds",
+      "id": "de5dbd32-dd1a-4228-a57a-61e015cb3e4f",
+      "name": "rrrrr",
+      "description": "rrrrrrr",
       "price": 0,
       "quantity": 1
     },
     {
-      "id": "62fe40b1-3dda-4c20-addc-b7419a4d0f46",
-      "name": "dsfs",
-      "description": "sdf",
+      "id": "40c215f4-3d65-4e8c-99d9-b5f07757f734",
+      "name": "sdq",
+      "description": "qsd",
+      "price": 1,
+      "quantity": 1
+    },
+    {
+      "id": "ed8ac712-3b70-4a56-ae65-91a113dad081",
+      "name": "ppp",
+      "description": "ppp",
       "price": 0,
       "quantity": 1
     },
     {
-      "id": "abce5e72-b403-4495-a901-3713d6ba3bd1",
-      "name": "fv",
-      "description": "sdfc",
-      "price": 0,
+      "id": "2528cd3d-cfec-4122-8ca6-a9afb2a66cfd",
+      "name": "kkkkk",
+      "description": "kkkkk",
+      "price": 200,
       "quantity": 1
     }
   ]

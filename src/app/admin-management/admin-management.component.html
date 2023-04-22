@@ -1,14 +1,14 @@
 <div class="flex justify-center flex-col items-center">
-  <div class="text-center py-5">
+  <div class="text-center py-5 text-xl">
     <h1>
       Bienvenue
       {{
         this.authenticationService.getUser()?.email === "elbab@gmail.com"
-          ? "Momo"
+          ? "elbab"
           : "Admin"
       }}
     </h1>
-    <br />
+
     <p>Vous êtes sur l'interface Administrateur</p>
     <!-- modifier admin par le nom de l'admin connecter -->
     <br />

@@ -16,7 +16,7 @@ export class AdminService implements OnInit {
 
   fetchData() {
     this.apiService.getTrainings().subscribe({
-      next: (data) => (this.listTrainings = data),
+      next: (data) => (this.listTrainings = data.reverse()),
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
@@ -33,5 +33,31 @@ export class AdminService implements OnInit {
     return this.currentlyHandledTraining;
   }
 
-  updateTraining(training: TrainingModel) {}
+  receiveTraining(training: TrainingModel) {
+    this.currentlyHandledTraining = training;
+  }
+
+  deleteTraining(id: string) {
+    this.apiService.deletetraining(id).subscribe({
+      next: () => this.fetchData(),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
+  }
+
+  updateTraining(training: TrainingModel) {
+    this.apiService.putTraining(training).subscribe({
+      next: (updatedTraining) => this.fetchData(),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
+  }
+
+  addTraining(training: TrainingModel) {
+    this.apiService.postTraining(training).subscribe({
+      next: (createdTraining) => this.fetchData(),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
+  }
 }

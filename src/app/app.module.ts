@@ -14,7 +14,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { OrdercongratsComponent } from './ordercongrats/ordercongrats.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AuthComponent } from './auth/auth.component';
@@ -33,7 +32,6 @@ import { TableTrainingsComponent } from './admin-management/table-trainings/tabl
     OrderFormComponent,
     OrdercongratsComponent,
     FooterComponent,
-    LoginComponent,
     AdminManagementComponent,
     CustomerComponent,
     AuthComponent,

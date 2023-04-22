@@ -3,7 +3,7 @@
   <p>Merci de modifier les champs voulu.</p>
   <form
     class="w-full max-w-lg py-5"
-    (submit)="updateTraining(training)"
+    (submit)="this.adminService.updateTraining(training)"
     #fAdd="ngForm"
   >
     <div class="flex flex-wrap -mx-3 mb-6">
@@ -63,7 +63,7 @@
     <button
       type="button"
       class=""
-      (click)="updateTraining(training)"
+      (click)="this.adminService.updateTraining(training)"
       routerLink="/adminManagement"
       [ngClass]="
         fAdd.valid
