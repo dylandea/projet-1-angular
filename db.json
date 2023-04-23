@@ -1,4 +1,12 @@
 {
+  "users": [
+    {
+      "email": "elbab@gmail.com",
+      "password": "1234",
+      "roles": ["ADMIN", "USER"]
+    },
+    { "email": "hugo@gmail.com", "password": "1234", "roles": ["USER"] }
+  ],
   "trainings": [
     {
       "id": "de5dbd32-dd1a-4228-a57a-61e015cb3e4f",

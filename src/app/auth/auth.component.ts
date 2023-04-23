@@ -39,12 +39,17 @@ export class AuthComponent implements OnInit {
 
   onLogin() {
     if (this.myForm.valid) {
-      if (
-        this.authenticationService.login(
-          this.myForm.value.email,
-          this.myForm.value.password
-        ) === true
-      ) {
+      this.authenticationService.login(
+        this.myForm.value.email,
+        this.myForm.value.password
+      );
+
+      this.nextMove();
+    }
+  }
+  nextMove() {
+    setTimeout(() => {
+      if (this.authenticationService.isLoggedFunc()) {
         if (this.authenticationService.isAdmin()) {
           this.router.navigateByUrl('adminManagement');
         } else {
@@ -54,6 +59,6 @@ export class AuthComponent implements OnInit {
       } else {
         this.router.navigateByUrl('auth');
       }
-    }
+    }, 500);
   }
 }

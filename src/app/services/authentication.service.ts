@@ -3,46 +3,53 @@ import { Router } from '@angular/router';
 import { LocalService } from './local.service';
 
 import { UserModel } from '../model/user.model';
+import { environment } from '../environment';
+import { HttpClient } from '@angular/common/http';
+import { TrainingModel } from '../model/training.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-  users: UserModel[];
   user: UserModel | undefined;
   isLogged: boolean | undefined = false;
-  constructor(private router: Router, private localStore: LocalService) {
+  error: null | undefined;
+
+  constructor(
+    private router: Router,
+    private localStore: LocalService,
+    private http: HttpClient
+  ) {
     let tmpUser = this.localStore.getData('user');
     if (tmpUser) {
       this.user = JSON.parse(tmpUser);
       this.isLogged = true;
-    } else {
-      this.isLogged = false;
     }
-
-    /* if (JSON.parse(localStorage.getItem('user')!) !== null) {
-      this.user = JSON.parse(localStorage.getItem('user')!);
-    } */
-
-    this.users = [
-      { email: 'elbab@gmail.com', password: '1234', roles: ['ADMIN', 'USER'] },
-      { email: 'hugo@gmail.com', password: '1234', roles: ['USER'] },
-    ];
   }
 
   login(email: string, password: string) {
-    let user = this.users.find(
+    /* let user = this.users.find(
       (x) => x.email === email && x.password === password
-    );
-    if (user) {
-      this.user = user;
-      this.isLogged = true;
-      this.localStore.saveData('user', JSON.stringify(this.user));
+    ); */
 
-      return true;
-    } else {
-      alert('Identifiant ou mot de passe incorrect.');
-      return false;
-    }
-    return false;
+    return this.http
+      .get<UserModel[]>(
+        environment.host + '/users?email=' + email + '&password=' + password
+      )
+      .subscribe({
+        next: (data) => {
+          if (data.length !== 0) {
+            this.user = data[0];
+            this.isLogged = true;
+            this.localStore.saveData('user', JSON.stringify(this.user));
+
+            return true;
+          } else {
+            alert('Identifiant ou mot de passe incorrect.');
+            return false;
+          }
+        },
+        error: (err) => (this.error = err.message),
+        complete: () => (this.error = null),
+      });
   }
 
   logout() {
