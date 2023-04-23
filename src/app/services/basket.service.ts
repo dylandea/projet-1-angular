@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { TrainingModel } from '../model/training.model';
 import { RouteConfigLoadEnd } from '@angular/router';
 import { CustomerModel } from '../model/customer.model';
+import { LocalService } from './local.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,12 +11,12 @@ export class BasketService {
   basket: TrainingModel[];
   private customer: CustomerModel;
 
-  constructor() {
+  constructor(private localStore: LocalService) {
     this.basket = JSON.parse(localStorage.getItem('basket') || '[]');
     this.customer = JSON.parse(
-      localStorage.getItem('customer') ||
-        JSON.stringify(new CustomerModel('', '', '', '', ''))
-    );
+      this.localStore.getData('customer') || '{}'
+    ) /*  ||
+      new CustomerModel('', '', '', '', '') */;
   }
 
   addToBasket(training: TrainingModel) {
@@ -59,9 +60,9 @@ export class BasketService {
   }
 
   saveCustomer(customer: CustomerModel) {
-    localStorage.setItem('customer', JSON.stringify(this.customer));
+    this.customer = customer;
+    this.localStore.saveData('customer', JSON.stringify(customer));
     localStorage.removeItem('basket');
     this.basket = [];
   }
-
 }

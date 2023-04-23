@@ -11,7 +11,6 @@ import { AboutComponent } from './about/about.component';
 import { BasketComponent } from './basket/basket.component';
 
 import { NotFoundComponent } from './not-found/not-found.component';
-import { OrderFormComponent } from './order-form/order-form.component';
 import { OrdercongratsComponent } from './ordercongrats/ordercongrats.component';
 import { FooterComponent } from './footer/footer.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
@@ -29,7 +28,6 @@ import { TableTrainingsComponent } from './admin-management/table-trainings/tabl
     AboutComponent,
     BasketComponent,
     NotFoundComponent,
-    OrderFormComponent,
     OrdercongratsComponent,
     FooterComponent,
     AdminManagementComponent,

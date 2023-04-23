@@ -25,34 +25,46 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      firstname: ['', [Validators.required]],
-      phone: ['', [Validators.required, Validators.maxLength(10)]],
-      address: ['', [Validators.required, Validators.minLength(25)]],
+      lastname: [
+        this.basketService.getCustomer().lastname,
+        Validators.required,
+      ],
+      firstname: [
+        this.basketService.getCustomer().firstname,
+        Validators.required,
+      ],
+      phone: [
+        this.basketService.getCustomer().phone,
+        [Validators.required, Validators.pattern('^[0-9]*$')],
+      ],
+      address: [
+        this.basketService.getCustomer().address,
+        [Validators.required],
+      ],
       email: [
-        '',
+        this.basketService.getCustomer().email,
         [
           Validators.required,
-          Validators.pattern(
-            "[/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/.]"
-          ),
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
         ],
       ],
     });
   }
 
-  onSaveCustomer(form: FormGroup) {
-    console.log(localStorage.getItem('customer'));
+  onSaveCustomer() {
     if (this.myForm.valid) {
       this.basketService.saveCustomer(
         new CustomerModel(
-          this.myForm.value.name,
+          this.myForm.value.lastname,
           this.myForm.value.firstname,
-          this.myForm.value.address,
           this.myForm.value.phone,
+          this.myForm.value.address,
           this.myForm.value.email
         )
       );
+      this.router.navigateByUrl('order-congrats');
+    } else {
+      console.log('form not valid');
     }
   }
 }

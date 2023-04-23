@@ -38,7 +38,7 @@
           <tbody class="divide-y divide-gray-200">
             <tr *ngFor="let itemBasket of listBasket" class="odd:bg-slate-200">
               <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                {{ itemBasket.id }}
+                {{ itemBasket.id.slice(0, 6) }}
               </td>
               <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                 {{ itemBasket.name }}

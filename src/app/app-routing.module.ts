@@ -4,7 +4,6 @@ import { TrainingsComponent } from './trainings/trainings.component';
 import { AboutComponent } from './about/about.component';
 import { BasketComponent } from './basket/basket.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { OrderFormComponent } from './order-form/order-form.component';
 import { OrdercongratsComponent } from './ordercongrats/ordercongrats.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
 import { AdminGuard } from './components/admin.guard';

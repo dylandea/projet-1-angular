@@ -1,14 +1,14 @@
 <div class="flex items-center justify-center">
   <form
     [formGroup]="myForm"
-    (ngSubmit)="onSaveCustomer(myForm)"
+    (ngSubmit)="onSaveCustomer()"
     class="mx-auto mt-8 mb-0 max-w-md space-y-4"
   >
     <div>
       <label for="lastname" class="sr-only">Nom de famille</label>
       <div class="relative">
         <input
-        formControlName="lastname"
+          formControlName="lastname"
           name="lastname"
           type="text"
           autocomplete="family-name"
@@ -16,6 +16,21 @@
           class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
           placeholder="Nom de famille"
         />
+        <ng-container
+          *ngIf="
+            myForm.controls['lastname'].invalid &&
+            (myForm.controls['lastname'].dirty ||
+              myForm.controls['lastname'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <span
+            *ngIf="myForm.controls['lastname'].errors?.['required']"
+            class="w-40 absolute left-full top-1/2 ml-4 -translate-y-1/2 rounded-lg bg-red-500 px-2 py-1.5 text-xs font-medium text-black z-50"
+          >
+            Ce champ est requis
+          </span>
+        </ng-container>
       </div>
     </div>
 
@@ -23,7 +38,7 @@
       <label for="firstname" class="sr-only">Prénom(s)</label>
       <div class="relative">
         <input
-        formControlName="firstname"
+          formControlName="firstname"
           name="firstname"
           autocomplete="given-name"
           id="firstname"
@@ -31,6 +46,21 @@
           class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
           placeholder="Prénom"
         />
+        <ng-container
+          *ngIf="
+            myForm.controls['firstname'].invalid &&
+            (myForm.controls['firstname'].dirty ||
+              myForm.controls['firstname'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <span
+            *ngIf="myForm.controls['firstname'].errors?.['required']"
+            class="w-40 absolute left-full top-1/2 ml-4 -translate-y-1/2 rounded-lg bg-red-500 px-2 py-1.5 text-xs font-medium text-black z-50"
+          >
+            Ce champ est requis
+          </span>
+        </ng-container>
       </div>
     </div>
 
@@ -38,14 +68,40 @@
       <label for="phone" class="sr-only">Téléphone</label>
       <div class="relative">
         <input
-        formControlName="phone"
+          formControlName="phone"
           name="phone"
           id="phone"
           type="text"
           class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
           placeholder="Téléphone"
-          maxlength="10"
+          minlength="10"
         />
+        <ng-container
+          *ngIf="
+            myForm.controls['phone'].invalid &&
+            (myForm.controls['phone'].dirty || myForm.controls['phone'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <span
+            *ngIf="myForm.controls['phone'].errors?.['required']"
+            class="w-40 absolute left-full top-1/2 ml-4 -translate-y-1/2 rounded-lg bg-red-500 px-2 py-1.5 text-xs font-medium text-black z-50"
+          >
+            Ce champ est requis
+          </span>
+          <span
+            *ngIf="myForm.controls['phone'].errors?.['pattern']"
+            class="w-40 absolute left-full top-1/2 ml-4 -translate-y-1/2 rounded-lg bg-red-500 px-2 py-1.5 text-xs font-medium text-black z-50"
+          >
+            Ce champ ne doit comporter que des chiffres
+          </span>
+          <span
+            *ngIf="myForm.controls['phone'].errors?.['minlength']"
+            class="w-40 absolute left-full top-1/2 ml-4 -translate-y-1/2 rounded-lg bg-red-500 px-2 py-1.5 text-xs font-medium text-black z-50"
+          >
+            Ce champ doit comporter au moins 10 chiffres
+          </span>
+        </ng-container>
       </div>
     </div>
 
@@ -53,7 +109,7 @@
       <label for="address" class="sr-only">Adresse complète</label>
       <div class="relative">
         <input
-        formControlName="address"
+          formControlName="address"
           name="address"
           autocomplete="street-address"
           id="address"
@@ -61,6 +117,21 @@
           class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
           placeholder="Adresse complète"
         />
+        <ng-container
+          *ngIf="
+            myForm.controls['address'].invalid &&
+            (myForm.controls['address'].dirty ||
+              myForm.controls['address'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <span
+            *ngIf="myForm.controls['address'].errors?.['required']"
+            class="w-40 absolute left-full top-1/2 ml-4 -translate-y-1/2 rounded-lg bg-red-500 px-2 py-1.5 text-xs font-medium text-black z-50"
+          >
+            Ce champ est requis
+          </span>
+        </ng-container>
       </div>
     </div>
 
@@ -68,7 +139,7 @@
       <label for="email" class="sr-only">Email</label>
       <div class="relative">
         <input
-        formControlName="email"
+          formControlName="email"
           name="email"
           autocomplete="email"
           id="email"
@@ -76,13 +147,32 @@
           class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
           placeholder="Email"
         />
+        <ng-container
+          *ngIf="
+            myForm.controls['email'].invalid &&
+            (myForm.controls['email'].dirty || myForm.controls['email'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <span
+            *ngIf="myForm.controls['email'].errors?.['required']"
+            class="w-40 absolute left-full top-1/2 ml-4 -translate-y-1/2 rounded-lg bg-red-500 px-2 py-1.5 text-xs font-medium text-black z-50"
+          >
+            Ce champ est requis
+          </span>
+          <span
+            *ngIf="myForm.controls['email'].errors?.['pattern']"
+            class="w-40 absolute left-full top-1/2 ml-4 -translate-y-1/2 rounded-lg bg-red-500 px-2 py-1.5 text-xs font-medium text-black z-50"
+          >
+            Ceci n'est pas un email valide
+          </span>
+        </ng-container>
       </div>
     </div>
 
     <div class="flex items-center justify-end m-4">
       <button
         type="submit"
-        routerLink="/order-congrats"
         class="inline-block rounded bg-teal-600 transition hover:bg-teal-700 px-4 py-2 text-sm font-medium text-white"
       >
         Valider

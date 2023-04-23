@@ -1,37 +1,71 @@
 <div class="flex items-group justify-center">
   <form [formGroup]="myForm" (ngSubmit)="onLogin()">
-    <div class="mb-6 form-group">
+    <div class="mb-6 form-group relative">
       <label
         for="email"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white control-label"
-        >Your email</label
+        >Email</label
       >
       <input
         formControlName="email"
         type="email"
         id="email"
+        autocomplete="email"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 form-control"
-      />
+      /><ng-container
+        *ngIf="
+          myForm.controls['email'].invalid &&
+          (myForm.controls['email'].dirty || myForm.controls['email'].touched)
+        "
+        class="alert alert-danger"
+      >
+        <span
+          *ngIf="myForm.controls['email'].errors?.['required']"
+          class="w-40 absolute left-full top-1/2 ml-4 -translate-y-1/2 rounded-lg bg-red-500 px-2 py-1.5 text-xs font-medium text-black z-50"
+        >
+          Ce champ est requis
+        </span>
+        <span
+          *ngIf="myForm.controls['email'].errors?.['pattern']"
+          class="w-40 absolute left-full top-1/2 ml-4 -translate-y-1/2 rounded-lg bg-red-500 px-2 py-1.5 text-xs font-medium text-black z-50"
+        >
+          Ceci n'est pas un email valide
+        </span>
+      </ng-container>
     </div>
-    <div class="mb-6 form-group">
+    <div class="mb-6 form-group relative">
       <label
         for="password"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white control-label"
-        >Your password</label
+        >Mot de passe</label
       >
       <input
         formControlName="password"
         type="password"
         id="password"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 form-control"
-      />
+      /><ng-container
+        *ngIf="
+          myForm.controls['password'].invalid &&
+          (myForm.controls['password'].dirty ||
+            myForm.controls['password'].touched)
+        "
+        class="alert alert-danger"
+      >
+        <span
+          *ngIf="myForm.controls['password'].errors?.['required']"
+          class="w-40 absolute left-full top-1/2 ml-4 -translate-y-1/2 rounded-lg bg-red-500 px-2 py-1.5 text-xs font-medium text-black z-50"
+        >
+          Ce champ est requis
+        </span>
+      </ng-container>
     </div>
 
     <button
       type="submit"
       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     >
-      Submit
+      Se connecter
     </button>
   </form>
 </div>
